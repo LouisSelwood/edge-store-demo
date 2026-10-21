@@ -118,5 +118,3 @@ I had little Linux or Docker experience before this, so I learned them alongside
 - Flask's `render_template` couldn't find the page because the Dockerfile never copied the `templates/` folder into the image. The lesson: the container only contains what the Dockerfile puts in it.
 - A misspelled `global` statement meant a background thread updated a local variable instead of the shared one, so the stats never appeared. Python raised no error, so I had to trace the data from the cloud's `curl` output through to the page.
 - Dockerfile case matters on Linux: `DockerFile` is not `Dockerfile`.
- 
-Claude finished the response
