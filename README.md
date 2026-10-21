@@ -21,7 +21,7 @@ I built it to learn Linux, Bash and Docker hands-on, and to understand the idea 
 You need Docker with the Compose plugin.
  
 ```bash
-git clone <this repo's URL>
+git clone "https://github.com/LouisSelwood/edge-store-demo.git"
 cd edge-store-demo
 docker compose up --build
 ```
