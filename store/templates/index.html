@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+	<title>Edge Store Demo: Store: {{store}}</title>
+	<meta http-equiv = "refresh" content = "3">
+</head>
+<body>
+	<p>Cloud status: {{ "reachable" if cloud_up else "unreachable"}}</p>
+	<p>Store: {{store}} | Sales waiting to sync: {{ pending }} </p>
+
+	<h1>Items</h1>
+	<ul>
+		{% for item in items %}
+		<li>
+			{{ item.name }} - {{ item.author }} (stock: {{ item.qty}})
+			<form method ="post" action ="/buy/{{ item.name | urlencode }}" style ="display:inline">
+				<button type = "submit">BUY</button>
+			</form>
+		</li>
+		{% endfor %}
+	</ul>\
+	<h2>Recent Sales</h2>
+	<ul>
+		{% for s in recent %}
+			<li>{{ s.item}} at {{s.time}}: {{ "sent" if s.sent else "pending" }}</li>
+		{% endfor %}
+	</ul>
+	<h2>Sales share by store</h2>
+	<table border ="1" cellpadding ="4">
+ 		<tr><th>Store</th><th>Sales</th><th>Share</th></tr>
+  		{% for row in stats.by_store %}
+  			<tr><td>{{ row.name }}</td><td>{{ row.sales }}</td><td>{{ row.percent }}%</td></tr>
+  		{% endfor %}
+	</table>
+
+	<h2>Sales share by book</h2>
+	<table border ="1" cellpadding ="4">
+		<tr><th>Book</th><th>Sales</th><th>Share</th></tr>
+		{% for row in stats.by_book %}
+			<tr><td>{{ row.name }}</td><td>{{ row.sales }}</td><td>{{ row.percent }}%</td></tr>
+		{% endfor %}
+	</table> 
+</body>
+</html>

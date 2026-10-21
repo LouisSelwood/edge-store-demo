@@ -1,0 +1,38 @@
+services:
+ store-bath:
+  build: ./store
+  ports:
+   - "5000:5000"
+  environment:
+   STORE_NAME: bath-01
+   CLOUD_URL: http://cloud:5001
+  depends_on:
+   - cloud
+ store-bristol:
+  build: ./store
+  ports:
+   - "5002:5000"
+  environment:
+   STORE_NAME: bristol-01
+   CLOUD_URL: http://cloud:5001
+  depends_on:
+   - cloud
+ store-london:
+  build: ./store
+  ports:
+   - "5003:5000"
+  environment:
+   STORE_NAME: london-01
+   CLOUD_URL: http://cloud:5001
+  depends_on:
+   - cloud
+
+ cloud:
+  build: ./cloud
+  ports:
+   - "5001:5001"
+  volumes:
+   - cloud-data:/data
+
+volumes:
+  cloud-data:

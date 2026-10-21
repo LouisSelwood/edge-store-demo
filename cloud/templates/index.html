@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+<head>
+	<title>Edge Store Demo: Cloud</title>
+</head>
+<body>
+	<p>List of Sales</p>
+
+	<h1>Sales</h1>
+	<ul>
+		{% for sale in sales %}
+		<li>
+			{{ sale.item }} - {{ sale.store }}  ( {{ sale.time}})
+		</li>
+		{% endfor %}
+	</ul>
+</body>
+</html>
